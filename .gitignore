@@ -1,0 +1,37 @@
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore virtual environment directories
+venv/
+.venv/
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore database files (if generated during development)
+*.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore configuration files containing sensitive information
+config.ini
+secrets.yml
+
+# Ignore compiled code or executables (if applicable)
+*.exe
+*.dll
+*.so
+*.out
+
+# Ignore dependencies and build artifacts (if managed separately)
+node_modules/
+build/
+dist/
+
+# Ignore environment-specific files
+.env
+
+# Ignore any other files or directories specific to your project or development environment
