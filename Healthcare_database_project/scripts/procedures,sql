@@ -1,0 +1,42 @@
+-- Stored Procedure: GetPatientInfo
+-- Stored Procedure: GetPatientInfo
+CREATE OR REPLACE FUNCTION GetPatientInfo(
+    IN patient_id INT
+)
+RETURNS TABLE (
+    PatientID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DOB DATE,
+    Gender VARCHAR(10),
+    Address VARCHAR(255),
+    Phone VARCHAR(20),
+    Email VARCHAR(100),
+    InsuranceID INT,
+    EmergencyContactName VARCHAR(100),
+    EmergencyContactPhone VARCHAR(20),
+    Allergies TEXT,
+    MedicalHistory TEXT,
+    Height DECIMAL(5, 2),
+    Weight DECIMAL(5, 2),
+    BloodType VARCHAR(5)
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT *
+    FROM Patients
+    WHERE Patients.PatientID = patient_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Stored Procedure: AddAppointment
+CREATE OR REPLACE PROCEDURE AddAppointment(
+    IN patient_id INT,
+    IN doctor_id INT,
+    IN appointment_datetime TIMESTAMP
+) AS $$
+BEGIN
+    INSERT INTO Appointments (PatientID, DoctorID, AppointmentDateTime)
+    VALUES (patient_id, doctor_id, appointment_datetime);
+END;
+$$ LANGUAGE plpgsql;
